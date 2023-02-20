@@ -23,7 +23,7 @@ export const StreamsPage = () => {
                 <Content>
                     <Container>
                         {streams.map((stream: string, index: number) => (
-                            <TwitchEmbeddedPlayer channel={stream} muted={true} parent={process.env.REACT_APP_WEBSITE_URL || ''} key={stream}></TwitchEmbeddedPlayer>
+                            <TwitchEmbeddedPlayer channel={stream} muted={true} parents={[ process.env.REACT_APP_WEBSITE_URL || '' ]} key={stream}></TwitchEmbeddedPlayer>
                         ))}                
                     </Container>
                 </Content>

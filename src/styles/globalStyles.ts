@@ -31,6 +31,10 @@ export const overlapStreamsThemeCss = css`
 `;
 
 export const GlobalStyles = createGlobalStyle`
+    html {
+        background-color: #111111;
+    }
+    
     html, body, #root {
         width: 100%;
         height: 100%;

@@ -8,15 +8,15 @@ const IFrame = styled.iframe.attrs({
 
 interface TwitchEmbeddedPlayerProps {
     channel: string;
-    parent: string;
+    parents: string[];
     muted: boolean;
 }
 
-export const TwitchEmbeddedPlayer = ({ channel, muted, parent }: TwitchEmbeddedPlayerProps) => {
+export const TwitchEmbeddedPlayer = ({ channel, muted, parents }: TwitchEmbeddedPlayerProps) => {
     return (
         <IFrame
             id={`twitch_embedded_player_${channel}`}
-            src={`https://player.twitch.tv/?muted=${muted}&channel=${channel}&parent=${parent}`}
+            src={`https://player.twitch.tv/?muted=${muted}&channel=${channel}${parents.map(parent => `&parent=${parent}`).join('')}`}
             allowFullScreen={true}></IFrame>
     );
 };
