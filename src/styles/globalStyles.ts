@@ -9,7 +9,7 @@ export const overlapStreamsThemeCss = css`
         height: 100%;
         display: flex;
         flex-direction: column;
-        align-items: flex-end;
+        align-items: flex-start;
     }
 
     .twitch-embedded-player:first-child {
@@ -27,6 +27,19 @@ export const overlapStreamsThemeCss = css`
         height: ${({ theme }: { theme: OverlapStreamsThemeOptions }) => calculateHeightWithTwitchAspectRatio(theme.width)}px;
         opacity: ${({ theme }: { theme: OverlapStreamsThemeOptions }) => theme.opacity};
         z-index: 9999;
+    }
+
+    .twitch-chats-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .twitch-embedded-chat {
+        width: 100%;
+        height: 100%;
     }
 `;
 

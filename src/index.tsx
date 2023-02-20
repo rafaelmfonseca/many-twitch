@@ -1,6 +1,5 @@
 import ReactDOM from 'react-dom/client';
 import React from 'react';
-import App from './App';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { StreamsPage } from './pages/StreamsPage/StreamsPage';
@@ -15,7 +14,7 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: (
-            <App></App>
+            <StreamsPage></StreamsPage>
         )
     },
 ]);
