@@ -1,9 +1,5 @@
 import styled from 'styled-components';
 
-export const Container = styled.div.attrs({
-    className: 'twitch-players-container'
-})``;
-
 export const Wrapper = styled.div`
     display: grid;
     grid-template-rows: auto;
@@ -12,13 +8,28 @@ export const Wrapper = styled.div`
     height: 100%;
 `;
 
-export const Content = styled.div`
+const MainContentDiv = styled.div`
     grid-row: 1;
     grid-column: 1;
 `;
 
-
-export const Sidebar = styled.div`
+const MainSidebarDiv = styled.div`
     grid-row: 1;
     grid-column: 2;
 `;
+
+export const MainContent = ({ children }: { children: React.ReactNode }) => {
+    return (
+        <MainContentDiv>{children}</MainContentDiv>
+    );
+};
+
+MainContent.Content = styled.div.attrs({ className: 'twitch-players-container' })``;
+
+export const MainSidebar = ({ children }: { children: React.ReactNode }) => {
+    return (
+        <MainSidebarDiv>{children}</MainSidebarDiv>
+    );
+};
+
+MainSidebar.Content = styled.div.attrs({ className: 'twitch-chats-container' })``;
