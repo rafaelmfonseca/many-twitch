@@ -23,4 +23,3 @@ export function replacesRoutesInHash(routes: string[]): string {
 
     return origin + '/#' + routes.join('/') + '?' + newUrlParams.toString();
 }
-  

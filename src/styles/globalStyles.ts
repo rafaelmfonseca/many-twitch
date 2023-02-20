@@ -12,7 +12,7 @@ export const overlapStreamsThemeCss = css`
         align-items: flex-start;
     }
 
-    .twitch-embedded-player:first-child {
+    .twitch-embedded-player.elem-order-1 {
         position: absolute;
         width: 100%;
         height: 100%;
@@ -20,9 +20,10 @@ export const overlapStreamsThemeCss = css`
         left: 0;
         right: 0;
         bottom: 0;
+        z-index: 0;
     }
 
-    .twitch-embedded-player:not(:first-child) {
+    .twitch-embedded-player {
         width: ${({ theme }: { theme: OverlapStreamsThemeOptions }) => theme.width}px;
         height: ${({ theme }: { theme: OverlapStreamsThemeOptions }) => calculateHeightWithTwitchAspectRatio(theme.width)}px;
         opacity: ${({ theme }: { theme: OverlapStreamsThemeOptions }) => theme.opacity};

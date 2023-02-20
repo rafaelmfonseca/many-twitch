@@ -12,15 +12,23 @@ export const StreamsPage = () => {
             <Wrapper>
                 <MainContent>
                     <MainContent.Content>
-                        {streams.map((stream: string) => (
-                            <TwitchEmbeddedPlayer channel={stream} muted={true} parents={[ process.env.REACT_APP_WEBSITE_URL || '' ]} key={stream}></TwitchEmbeddedPlayer>
+                        {streams.concat().sort().map((stream: string, index: number) => (
+                            <TwitchEmbeddedPlayer
+                                channel={stream}
+                                muted={index > 0}
+                                parents={[ process.env.REACT_APP_WEBSITE_URL || '' ]}
+                                key={stream}
+                                style={{ order: (streams.indexOf(stream) + 1) }}></TwitchEmbeddedPlayer>
                         ))}
                     </MainContent.Content>
                 </MainContent>
                 <MainSidebar>
                     <MainSidebar.Content>
                         {streams.map((stream: string) => (
-                            <TwitchEmbeddedChat channel={stream} parents={[ process.env.REACT_APP_WEBSITE_URL || '' ]} key={stream}></TwitchEmbeddedChat>
+                            <TwitchEmbeddedChat
+                                channel={stream}
+                                parents={[ process.env.REACT_APP_WEBSITE_URL || '' ]}
+                                key={stream}></TwitchEmbeddedChat>
                         ))}
                     </MainSidebar.Content>
                 </MainSidebar>
