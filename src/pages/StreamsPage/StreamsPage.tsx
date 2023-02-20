@@ -24,11 +24,12 @@ export const StreamsPage = () => {
                 </MainContent>
                 <MainSidebar>
                     <MainSidebar.Content>
-                        {streams.map((stream: string) => (
+                        {streams.concat().sort().map((stream: string) => (
                             <TwitchEmbeddedChat
                                 channel={stream}
                                 parents={[ process.env.REACT_APP_WEBSITE_URL || '' ]}
-                                key={stream}></TwitchEmbeddedChat>
+                                key={stream}
+                                style={{ order: (streams.indexOf(stream) + 1) }}></TwitchEmbeddedChat>
                         ))}
                     </MainSidebar.Content>
                 </MainSidebar>

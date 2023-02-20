@@ -13,7 +13,9 @@ export const useStreamsHashParams = (): [ string[], Dispatch<SetStateAction<stri
 
     const setStreamsValue = useCallback((nextInit: SetStateAction<string[]>) => {
         const newStreamsValue = typeof nextInit === 'function' ? nextInit(streams) : nextInit;
-        replacesRoutesInHash(newStreamsValue);
+        const newUrl = replacesRoutesInHash(newStreamsValue);
+
+        window.location.href = newUrl;
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
