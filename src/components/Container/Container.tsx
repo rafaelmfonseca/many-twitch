@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+export const Container = styled.div.attrs({
+    className: 'twitch-players-container'
+})``;
+
 export const Wrapper = styled.div`
     display: grid;
     grid-template-rows: auto;
@@ -13,11 +17,6 @@ export const Content = styled.div`
     grid-column: 1;
 `;
 
-export const Container = styled.div`
-    position: relative;
-    width: 100%;
-    height: 100%;
-`;
 
 export const Sidebar = styled.div`
     grid-row: 1;

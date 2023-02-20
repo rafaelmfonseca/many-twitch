@@ -2,8 +2,6 @@ import ReactDOM from 'react-dom/client';
 import React from 'react';
 import App from './App';
 
-import './index.css';
-
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { StreamsPage } from './pages/StreamsPage/StreamsPage';
   
