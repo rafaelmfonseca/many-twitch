@@ -29,6 +29,7 @@ export const StreamsPage = () => {
                                 channel={stream}
                                 parents={[ process.env.REACT_APP_WEBSITE_URL || '' ]}
                                 key={stream}
+                                darkpopout={true}
                                 style={{ order: (streams.indexOf(stream) + 1) }}></TwitchEmbeddedChat>
                         ))}
                     </MainSidebar.Content>

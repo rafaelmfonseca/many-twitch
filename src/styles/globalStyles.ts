@@ -1,6 +1,7 @@
 import { createGlobalStyle, css } from 'styled-components';
-import { OverlapStreamsThemeOptions } from '../hooks/useThemeOptions';
+
 import { calculateHeightWithTwitchAspectRatio } from '../utils/resolutionUtils';
+import { OverlapStreamsThemeOptions } from '../hooks/useThemeOptions';
 
 export const overlapStreamsThemeCss = css`
     .twitch-players-container {

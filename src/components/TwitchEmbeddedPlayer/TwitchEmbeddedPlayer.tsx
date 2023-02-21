@@ -10,7 +10,7 @@ interface TwitchEmbeddedPlayerProps {
     channel: string;
     parents: string[];
     muted: boolean;
-    style: CSSProperties | undefined;
+    style?: CSSProperties;
 }
 
 export const TwitchEmbeddedPlayer = ({ channel, muted, parents, style }: TwitchEmbeddedPlayerProps) => {

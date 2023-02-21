@@ -9,14 +9,15 @@ const IFrame = styled.iframe.attrs(({ style }) => ({
 interface TwitchEmbeddedChatProps {
     channel: string;
     parents: string[];
-    style: CSSProperties | undefined;
+    darkpopout?: boolean;
+    style?: CSSProperties;
 }
 
-export const TwitchEmbeddedChat = ({ channel, parents, style }: TwitchEmbeddedChatProps) => {
+export const TwitchEmbeddedChat = ({ channel, parents, darkpopout, style }: TwitchEmbeddedChatProps) => {
     return (
         <IFrame
             id={`twitch_embedded_chat_${channel}`}
-            src={`https://twitch.tv/embed/${channel}/chat?${parents.map(parent => `&parent=${parent}`).join('')}`}
+            src={`https://twitch.tv/embed/${channel}/chat?${darkpopout ? 'darkpopout' : ''}${parents.map(parent => `&parent=${parent}`).join('')}`}
             style={style}></IFrame>
     );
 };

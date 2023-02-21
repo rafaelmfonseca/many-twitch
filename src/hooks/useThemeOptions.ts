@@ -19,11 +19,13 @@ function getDefaultThemeOptions(): ThemeOptions {
 function getThemeOptionsInStorageOrDefault(): ThemeOptions {
     const themeOptions = window.localStorage.getItem('theme_options');
 
-    if (typeof themeOptions === 'string' && themeOptions.trimStart().indexOf('{') === 0) {
-        return JSON.parse(themeOptions);
+    if (typeof themeOptions === 'string') {
+        if (themeOptions.trimStart().indexOf('{') === 0) {
+            return JSON.parse(themeOptions);
+        } else {
+            window.localStorage.clear();
+        }
     }
-
-    window.localStorage.clear();
 
     return getDefaultThemeOptions();
 }
