@@ -1,36 +1,18 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext, Dispatch, SetStateAction } from 'react';
+import { ContextError } from '../errors/contextError';
 
-export interface OverlapStreamsThemeOptions {
-    name: 'overlap-streams';
-    opacity: number;
-    width: number;
-}
+import { ThemeOptions } from '../models/themeOptions';
 
-export type ThemeOptions = OverlapStreamsThemeOptions;
+type ThemeOptionsContextValue = [
+    themeOptions: ThemeOptions,
+    setThemeOptions: Dispatch<SetStateAction<ThemeOptions>>,
+];
 
-function getDefaultThemeOptions(): ThemeOptions {
-    return {
-        name: 'overlap-streams',
-        opacity: 0.8,
-        width: 500
-    };
-}
-
-function getThemeOptionsInStorageOrDefault(): ThemeOptions {
-    const themeOptions = window.localStorage.getItem('theme_options');
-
-    if (typeof themeOptions === 'string') {
-        if (themeOptions.trimStart().indexOf('{') === 0) {
-            return JSON.parse(themeOptions);
-        } else {
-            window.localStorage.clear();
-        }
+export const ThemeOptionsContext = createContext<ThemeOptionsContextValue | null>(null);
+export function useThemeOptions(): ThemeOptionsContextValue {
+    const value = useContext(ThemeOptionsContext);
+    if (!value) {
+        throw new ContextError('ThemeOptionsContext');
     }
-
-    return getDefaultThemeOptions();
+    return value;
 }
-
-export const ThemeOptionsContext = createContext<ThemeOptions>(getThemeOptionsInStorageOrDefault());
-export const useThemeOptions = () => useContext(ThemeOptionsContext);
-
-  

@@ -1,8 +1,9 @@
 import ReactDOM from 'react-dom/client';
-import React from 'react';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { StreamsPage } from './pages/StreamsPage/StreamsPage';
+
+import 'bootstrap/dist/css/bootstrap.css';
   
 const router = createBrowserRouter([
     {

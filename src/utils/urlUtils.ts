@@ -1,4 +1,4 @@
-function extractHashInfo(): [ string, string ] {
+export function extractHashInfo(): [ string, string ] {
     const { hash } = window.location;
     const [ routePath, routeParams ] = hash.substring(1).split('?');
     return [ routePath, routeParams ];

@@ -1,7 +1,7 @@
 import { createGlobalStyle, css } from 'styled-components';
+import { OverlapStreamsThemeOptions } from '../models/themeOptions';
 
 import { calculateHeightWithTwitchAspectRatio } from '../utils/resolutionUtils';
-import { OverlapStreamsThemeOptions } from '../hooks/useThemeOptions';
 
 export const overlapStreamsThemeCss = css`
     .twitch-players-container {
@@ -24,7 +24,7 @@ export const overlapStreamsThemeCss = css`
         z-index: 0;
     }
 
-    .twitch-embedded-player {
+    .twitch-embedded-player:not(.elem-order-1) {
         width: ${({ theme }: { theme: OverlapStreamsThemeOptions }) => theme.width}px;
         height: ${({ theme }: { theme: OverlapStreamsThemeOptions }) => calculateHeightWithTwitchAspectRatio(theme.width)}px;
         opacity: ${({ theme }: { theme: OverlapStreamsThemeOptions }) => theme.opacity};
