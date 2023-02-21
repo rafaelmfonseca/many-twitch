@@ -3,8 +3,7 @@ import { createContext, useContext, Dispatch } from 'react';
 import { ContextError } from '../errors/contextError';
 
 interface  ModalContextValue {
-    modals: { [modal: string]: boolean };
-    isOpened: (modal: string) => boolean;
+    modals: { [modal: string]: boolean | undefined };
     openModal: Dispatch<string>;
     closeModal: Dispatch<string>;
 };

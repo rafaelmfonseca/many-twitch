@@ -10,12 +10,16 @@ export const ThemeOptionsModal = () => {
     const { modals, closeModal } = useModal();
 
     useEffect(() => {
-        setShow(Boolean(modals[THEME_OPTIONS_MODAL_NAME]));
+        setShow(modals[THEME_OPTIONS_MODAL_NAME] === true);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [ modals ]);
+    }, [ modals[THEME_OPTIONS_MODAL_NAME] ]);
+
+    const handleCloseModal = () => {
+        closeModal(THEME_OPTIONS_MODAL_NAME);
+    };
 
     return (
-        <Modal show={show} size="xl">
+        <Modal show={show} size="xl" onHide={handleCloseModal}>
             <Modal.Header closeButton>
                 <Modal.Title>Modal title</Modal.Title>
             </Modal.Header>
@@ -25,7 +29,7 @@ export const ThemeOptionsModal = () => {
             </Modal.Body>
 
             <Modal.Footer>
-                <Button variant="secondary" onClick={() => closeModal(THEME_OPTIONS_MODAL_NAME)}>Close</Button>
+                <Button variant="secondary" onClick={handleCloseModal}>Close</Button>
                 <Button variant="primary">Save changes</Button>
             </Modal.Footer>
         </Modal>
