@@ -1,9 +1,9 @@
-import { createGlobalStyle, css } from 'styled-components';
-import { OverlapStreamsThemeOptions } from '../models/themeOptions';
+import { createGlobalStyle, css, FlattenInterpolation, ThemeProps, DefaultTheme } from 'styled-components';
 
+import { OverlapStreamsThemeOptions, ThemeOptionsNames } from '../models/themeOptions';
 import { calculateHeightWithTwitchAspectRatio } from '../utils/resolutionUtils';
 
-export const overlapStreamsThemeCss = css`
+const overlapStreamsThemeCss = css`
     .twitch-players-container {
         position: relative;
         width: 100%;
@@ -45,6 +45,10 @@ export const overlapStreamsThemeCss = css`
     }
 `;
 
+const availableThemes: { [theme in ThemeOptionsNames]: FlattenInterpolation<ThemeProps<DefaultTheme>> } = {
+    'overlap-streams': overlapStreamsThemeCss
+};
+
 export const GlobalStyles = createGlobalStyle`
     html {
         background-color: #111111;
@@ -70,5 +74,5 @@ export const GlobalStyles = createGlobalStyle`
         -moz-osx-font-smoothing: grayscale;
     }
 
-    ${(props) => (props.theme.name === 'overlap-streams') ? overlapStreamsThemeCss : ''}
+    ${({ theme }) => (availableThemes[theme.name] || '')}
 `;

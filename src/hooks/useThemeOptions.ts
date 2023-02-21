@@ -1,6 +1,6 @@
 import { createContext, useContext, Dispatch, SetStateAction } from 'react';
-import { ContextError } from '../errors/contextError';
 
+import { ContextError } from '../errors/contextError';
 import { ThemeOptions } from '../models/themeOptions';
 
 interface ThemeOptionsContextValue {

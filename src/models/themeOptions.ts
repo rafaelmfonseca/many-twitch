@@ -5,3 +5,4 @@ export interface OverlapStreamsThemeOptions {
 }
 
 export type ThemeOptions = OverlapStreamsThemeOptions;
+export type ThemeOptionsNames = ThemeOptions['name'];

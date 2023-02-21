@@ -1,5 +1,5 @@
 import { ThemeProvider } from 'styled-components';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { TwitchEmbeddedPlayer } from '../../components/TwitchEmbeddedPlayer/TwitchEmbeddedPlayer';
 import { getDefaultThemeOptions, getThemeOptionsInStorage } from '../../utils/themeOptionsUtils';
@@ -29,10 +29,6 @@ export const StreamsPage = () => {
     const closeModal = (modal: string) => {
         setModals(modals => ({ ...modals, [modal]: false }));
     };
-
-    setTimeout(() => {
-        openModal('theme-options-modal');
-    }, 1000);
 
     return (
         <ModalContext.Provider value={{ modals, isOpened, openModal, closeModal }}>

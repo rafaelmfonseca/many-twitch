@@ -3,12 +3,14 @@ import { useEffect, useState } from 'react';
 
 import { useModal } from '../../hooks/useModal';
 
+export const THEME_OPTIONS_MODAL_NAME = 'theme-options-modal';
+
 export const ThemeOptionsModal = () => {
     const [ show, setShow ] = useState(false);
     const { modals, closeModal } = useModal();
 
     useEffect(() => {
-        setShow(Boolean(modals['theme-options-modal']));
+        setShow(Boolean(modals[THEME_OPTIONS_MODAL_NAME]));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [ modals ]);
 
@@ -23,7 +25,7 @@ export const ThemeOptionsModal = () => {
             </Modal.Body>
 
             <Modal.Footer>
-                <Button variant="secondary" onClick={() => closeModal('theme-options-modal')}>Close</Button>
+                <Button variant="secondary" onClick={() => closeModal(THEME_OPTIONS_MODAL_NAME)}>Close</Button>
                 <Button variant="primary">Save changes</Button>
             </Modal.Footer>
         </Modal>

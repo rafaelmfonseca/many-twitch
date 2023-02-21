@@ -1,4 +1,5 @@
 import { createContext, useContext, Dispatch } from 'react';
+
 import { ContextError } from '../errors/contextError';
 
 interface  ModalContextValue {
