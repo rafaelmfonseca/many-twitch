@@ -5,7 +5,7 @@ import { useModal } from '../../hooks/useModal';
 
 export const ThemeOptionsModal = () => {
     const [ show, setShow ] = useState(false);
-    const { modals } = useModal();
+    const { modals, closeModal } = useModal();
 
     useEffect(() => {
         setShow(Boolean(modals['theme-options-modal']));
@@ -13,7 +13,7 @@ export const ThemeOptionsModal = () => {
     }, [ modals ]);
 
     return (
-        <Modal show={show}>
+        <Modal show={show} size="xl">
             <Modal.Header closeButton>
                 <Modal.Title>Modal title</Modal.Title>
             </Modal.Header>
@@ -23,7 +23,7 @@ export const ThemeOptionsModal = () => {
             </Modal.Body>
 
             <Modal.Footer>
-                <Button variant="secondary">Close</Button>
+                <Button variant="secondary" onClick={() => closeModal('theme-options-modal')}>Close</Button>
                 <Button variant="primary">Save changes</Button>
             </Modal.Footer>
         </Modal>

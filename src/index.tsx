@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { StreamsPage } from './pages/StreamsPage/StreamsPage';
 
-import 'bootstrap/dist/css/bootstrap.css';
+import './index.scss';
+import '../node_modules/bootstrap/dist/js/bootstrap.min';
   
 const router = createBrowserRouter([
     {

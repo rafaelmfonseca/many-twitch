@@ -3,10 +3,10 @@ import { ContextError } from '../errors/contextError';
 
 import { ThemeOptions } from '../models/themeOptions';
 
-type ThemeOptionsContextValue = [
-    themeOptions: ThemeOptions,
-    setThemeOptions: Dispatch<SetStateAction<ThemeOptions>>,
-];
+interface ThemeOptionsContextValue {
+    themeOptions: ThemeOptions;
+    setThemeOptions: Dispatch<SetStateAction<ThemeOptions>>;
+};
 
 export const ThemeOptionsContext = createContext<ThemeOptionsContextValue | null>(null);
 export function useThemeOptions(): ThemeOptionsContextValue {

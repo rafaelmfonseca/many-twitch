@@ -1,11 +1,11 @@
 import { createContext, useContext, Dispatch } from 'react';
 import { ContextError } from '../errors/contextError';
 
-type ModalContextValue = {
-    modals: { [modal: string]: boolean },
-    isOpened: (modal: string) => boolean,
-    openModal: Dispatch<string>,
-    closeModal: Dispatch<string>,
+interface  ModalContextValue {
+    modals: { [modal: string]: boolean };
+    isOpened: (modal: string) => boolean;
+    openModal: Dispatch<string>;
+    closeModal: Dispatch<string>;
 };
 
 export const ModalContext = createContext<ModalContextValue | null>(null);

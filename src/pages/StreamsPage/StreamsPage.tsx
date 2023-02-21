@@ -13,7 +13,7 @@ import { ThemeOptions } from '../../models/themeOptions';
 import { ModalContext } from '../../hooks/useModal';
 
 export const StreamsPage = () => {
-    const [ options, setOptions ] = useState<ThemeOptions>((getThemeOptionsInStorage() || getDefaultThemeOptions()));
+    const [ themeOptions, setThemeOptions ] = useState<ThemeOptions>((getThemeOptionsInStorage() || getDefaultThemeOptions()));
     const [ streams, setStreams ] = useStreamsHashParams();
     const [ modals, setModals ] = useState<{ [modal: string]: boolean }>({});
 
@@ -30,10 +30,14 @@ export const StreamsPage = () => {
         setModals(modals => ({ ...modals, [modal]: false }));
     };
 
+    setTimeout(() => {
+        openModal('theme-options-modal');
+    }, 1000);
+
     return (
         <ModalContext.Provider value={{ modals, isOpened, openModal, closeModal }}>
-            <ThemeOptionsContext.Provider value={[ options, setOptions ]}>
-                <ThemeProvider theme={options}>
+            <ThemeOptionsContext.Provider value={{ themeOptions, setThemeOptions }}>
+                <ThemeProvider theme={themeOptions}>
                     <GlobalStyles />
                     <Wrapper>
                         <MainContent>
