@@ -4,6 +4,7 @@ import { TwitchEmbeddedPlayer } from '../../components/TwitchEmbeddedPlayer/Twit
 import { TwitchEmbeddedChat } from '../../components/TwitchEmbeddedChat/TwitchEmbeddedChat';
 import { ThemeOptionsModal } from '../../components/ThemeOptionsModal/ThemeOptionsModal';
 import { MainContent, MainSidebar, Wrapper } from '../../components/Container/Container';
+import { GlobalHotkeys } from '../../components/GlobalHotkeys/GlobalHotkeys';
 import { useStreamsHashParams } from '../../hooks/useStreamsHashParams';
 import { GlobalStyles } from '../../styles/globalStyles';
 
@@ -14,6 +15,7 @@ export const StreamsPage = () => {
         <ModalContextProvider>
             <ThemeOptionsContextProvider>
                 <GlobalStyles />
+                <GlobalHotkeys />
                 <Wrapper>
                     <MainContent>
                         <MainContent.Content>
@@ -40,7 +42,7 @@ export const StreamsPage = () => {
                         </MainSidebar.Content>
                     </MainSidebar>
                 </Wrapper>
-                <ThemeOptionsModal></ThemeOptionsModal>
+                <ThemeOptionsModal onSubmit={(data) => console.log(data)}></ThemeOptionsModal>
             </ThemeOptionsContextProvider>
         </ModalContextProvider>
     );

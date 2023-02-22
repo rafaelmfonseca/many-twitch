@@ -3,7 +3,7 @@ import { ThemeOptions } from '../models/themeOptions';
 export function getDefaultThemeOptions(): ThemeOptions {
     return {
         name: 'overlap-streams',
-        opacity: 0.8,
+        opacity: 80,
         width: 500
     };
 }

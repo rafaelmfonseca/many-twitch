@@ -25,9 +25,9 @@ const overlapStreamsThemeCss = css`
     }
 
     .twitch-embedded-player:not(.elem-order-1) {
-        width: ${({ theme }: { theme: OverlapStreamsThemeOptions }) => theme.width}px;
-        height: ${({ theme }: { theme: OverlapStreamsThemeOptions }) => calculateHeightWithTwitchAspectRatio(theme.width)}px;
-        opacity: ${({ theme }: { theme: OverlapStreamsThemeOptions }) => theme.opacity};
+        width: ${({ theme }: { theme: OverlapStreamsThemeOptions }) => (theme.width)}px;
+        height: ${({ theme }: { theme: OverlapStreamsThemeOptions }) => (calculateHeightWithTwitchAspectRatio(theme.width))}px;
+        opacity: ${({ theme }: { theme: OverlapStreamsThemeOptions }) => (theme.opacity / 100)};
         z-index: 9999;
     }
 
