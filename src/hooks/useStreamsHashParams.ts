@@ -1,7 +1,7 @@
 import { useEffect, useState, Dispatch, SetStateAction, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import { extractRoutesPathFromHash, replaceRoutesInHash } from '../utils/urlUtils';
+import { extractRoutesPathFromHash, replaceRoutesInHash } from '../utils/locationUtils';
   
 export const useStreamsHashParams = (): [ string[], Dispatch<SetStateAction<string[]>> ] => {
     const [ streams, setStreams ] = useState<string[]>([]);

@@ -1,23 +1,20 @@
+import { DEFAULT_THEME_OPTIONS_VALUE, THEME_OPTIONS_STORAGE_KEY } from '../common/constants';
 import { ThemeOptions } from '../models/themeOptions';
 
-export function getDefaultThemeOptions(): ThemeOptions {
-    return {
-        name: 'overlap-streams',
-        opacity: 80,
-        width: 500
-    };
-}
+export function getThemeOptionsInStorage(): ThemeOptions {
+    let themeOptions: ThemeOptions | null = null;
 
-export function getThemeOptionsInStorage(): ThemeOptions | undefined {
-    const themeOptions = window.localStorage.getItem('theme_options');
+    try {
+        themeOptions = JSON.parse(window.localStorage.getItem(THEME_OPTIONS_STORAGE_KEY) as string);
+    } catch (e) {}
 
-    if (typeof themeOptions === 'string') {
-        if (themeOptions.trimStart().indexOf('{') === 0) {
-            return JSON.parse(themeOptions);
-        } else {
-            window.localStorage.clear();
-        }
+    if (!themeOptions) {
+        themeOptions = DEFAULT_THEME_OPTIONS_VALUE;
     }
 
-    return undefined;
+    return themeOptions;
+}
+
+export function setThemeOptionsInStorage(themeOptions: ThemeOptions): void {
+    window.localStorage.setItem(THEME_OPTIONS_STORAGE_KEY, JSON.stringify(themeOptions));
 }
