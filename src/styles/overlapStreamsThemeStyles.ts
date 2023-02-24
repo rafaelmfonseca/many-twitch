@@ -4,14 +4,14 @@ import { calculateHeightWithTwitchAspectRatio } from '../utils/resolutionUtils';
 import { OverlapStreamsThemeOptions } from '../models/themeOptions';
 
 export const overlapStreamsThemeStyles = css`
-    .modal, .modal-dialog {
+    .modal, .modal-dialog, .modal-backdrop {
         z-index: 99999;
     }
 
     .wrapper {
         display: grid;
         grid-template-rows: 1fr min-content;
-        grid-template-columns: auto 435px;
+        grid-template-columns: auto ${({ theme }: { theme: OverlapStreamsThemeOptions }) => (theme.chatWidth)}px;
         width: 100%;
         height: 100%;
     }
@@ -37,25 +37,64 @@ export const overlapStreamsThemeStyles = css`
         width: 100%;
         height: 100%;
         display: flex;
-        flex-direction: column;
-        align-items: flex-end;
+        flex-direction: ${({ theme }: { theme: OverlapStreamsThemeOptions }) => (theme.streamsDirection)};
+        align-items: ${({ theme }: { theme: OverlapStreamsThemeOptions }) => (theme.streamsAlignment)};
     }
 
     .twitch-players-container > .twitch-embedded-player.elem-order-1 {
         position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
         z-index: 0;
+
+        ${({ theme }: { theme: OverlapStreamsThemeOptions }) => (theme.mainStreamMargin === 'none' ? `
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            ` : '')}
+
+        ${({ theme }: { theme: OverlapStreamsThemeOptions }) => (theme.mainStreamMargin === 'right' ? `
+            width: calc(100% - ${theme.streamsWidth}px);
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            ` : '')}
+
+        ${({ theme }: { theme: OverlapStreamsThemeOptions }) => (theme.mainStreamMargin === 'bottom' ? `
+            width: 100%;
+            height: calc(100% - ${(calculateHeightWithTwitchAspectRatio(theme.streamsWidth))}px);
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        ` : '')}
+        
+        ${({ theme }: { theme: OverlapStreamsThemeOptions }) => (theme.mainStreamMargin === 'left' ? `
+            width: calc(100% - ${theme.streamsWidth}px);
+            height: 100%;
+            top: 0;
+            left: ${theme.streamsWidth}px;
+            right: 0;
+            bottom: 0;
+        ` : '')}
+
+        ${({ theme }: { theme: OverlapStreamsThemeOptions }) => (theme.mainStreamMargin === 'top' ? `
+            width: 100%;
+            height: calc(100% - ${(calculateHeightWithTwitchAspectRatio(theme.streamsWidth))}px);
+            top: ${(calculateHeightWithTwitchAspectRatio(theme.streamsWidth))}px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        ` : '')}
     }
 
     .twitch-players-container > .twitch-embedded-player:not(.elem-order-1) {
         width: ${({ theme }: { theme: OverlapStreamsThemeOptions }) => (theme.streamsWidth)}px;
         height: ${({ theme }: { theme: OverlapStreamsThemeOptions }) => (calculateHeightWithTwitchAspectRatio(theme.streamsWidth))}px;
-        opacity: ${({ theme }: { theme: OverlapStreamsThemeOptions }) => (theme.opacity / 100)};
+        opacity: ${({ theme }: { theme: OverlapStreamsThemeOptions }) => (theme.streamsOpacity / 100)};
         z-index: 9999;
     }
 
@@ -76,5 +115,9 @@ export const overlapStreamsThemeStyles = css`
     // Options container
     .twitch-options-container {
         margin: 0.25rem;
+    }
+
+    .modal-body {
+        overflow-wrap: break-word;
     }
 `;

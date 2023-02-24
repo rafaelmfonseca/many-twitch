@@ -1,13 +1,14 @@
 import { Button } from 'react-bootstrap';
 import { useState } from 'react';
 
+import { MainContent, MainOptions, MainSidebar, Wrapper } from '../../components/Container/Container';
 import { TwitchEmbeddedPlayer } from '../../components/TwitchEmbeddedPlayer/TwitchEmbeddedPlayer';
 import { TwitchEmbeddedChat } from '../../components/TwitchEmbeddedChat/TwitchEmbeddedChat';
 import { ThemeOptionsModal } from '../../components/ThemeOptionsModal/ThemeOptionsModal';
-import { MainContent, MainOptions, MainSidebar, Wrapper } from '../../components/Container/Container';
+import { setThemeOptionsInStorage } from '../../utils/themeOptionsUtils';
 import { useStreamsHashParams } from '../../hooks/useStreamsHashParams';
-import { ThemeOptions } from '../../models/themeOptions';
 import { useThemeOptions } from '../../hooks/useThemeOptions';
+import { ThemeOptions } from '../../models/themeOptions';
 
 export const StreamsPage = () => {
     const [ showThemeOptionsModal, setShowThemeOptionsModal ] = useState(false);
@@ -15,14 +16,12 @@ export const StreamsPage = () => {
     const [ streams, setStreams ] = useStreamsHashParams();
 
     const handleHideThemeOptionsModal = () => {
-        debugger;
         setShowThemeOptionsModal(false);
     };
 
-    const handleSubmitThemeOptionsModal = (themeOptions: ThemeOptions) => {
-        debugger;
+    const handleSaveThemeOptionsModal = (themeOptions: ThemeOptions) => {
         setThemeOptions(themeOptions);
-        handleHideThemeOptionsModal();
+        setThemeOptionsInStorage(themeOptions);
     };
 
     return (
@@ -58,7 +57,7 @@ export const StreamsPage = () => {
                     </MainOptions.Content>
                 </MainOptions>
             </Wrapper>
-            <ThemeOptionsModal show={showThemeOptionsModal} onHide={handleHideThemeOptionsModal} onSubmit={handleSubmitThemeOptionsModal}></ThemeOptionsModal>
+            <ThemeOptionsModal show={showThemeOptionsModal} onHide={handleHideThemeOptionsModal} onSave={handleSaveThemeOptionsModal}></ThemeOptionsModal>
         </>
     );
 };
