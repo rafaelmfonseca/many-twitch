@@ -1,8 +1,5 @@
 import { ThemeOptions } from '../models/themeOptions';
 
-// Theme options modal
-export const THEME_OPTIONS_MODAL_NAME = 'theme-options-modal';
-
 // Local storage
 export const THEME_OPTIONS_STORAGE_KEY = 'theme_options';
 
@@ -10,6 +7,6 @@ export const THEME_OPTIONS_STORAGE_KEY = 'theme_options';
 export const DEFAULT_THEME_OPTIONS_VALUE: ThemeOptions = {
     name: 'overlap-streams',
     opacity: 100,
-    width: 750,
+    streamsWidth: 750,
     chatWidth: 300,
 };

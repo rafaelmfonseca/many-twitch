@@ -17,3 +17,11 @@ export const MainSidebar = ({ children }: { children: React.ReactNode }) => {
 };
 
 MainSidebar.Content = styled.div.attrs({ className: 'twitch-chats-container' })``;
+
+export const MainOptions = ({ children }: { children: React.ReactNode }) => {
+    return (
+        <div className="main-options">{children}</div>
+    );
+};
+
+MainOptions.Content = styled.div.attrs({ className: 'twitch-options-container' })``;

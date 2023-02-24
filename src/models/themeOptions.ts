@@ -1,7 +1,7 @@
 export interface OverlapStreamsThemeOptions {
     name: 'overlap-streams';
     opacity: number;
-    width: number;
+    streamsWidth: number;
     chatWidth: number;
 }
 

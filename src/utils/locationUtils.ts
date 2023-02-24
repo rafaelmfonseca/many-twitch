@@ -17,9 +17,8 @@ export function extractRoutesParamFromHash(): [ string, string ][] {
 }
 
 export function replaceRoutesInHash(routes: string[]): string {
-    const urlParams = extractRoutesParamFromHash();
-    const newUrlParams = new URLSearchParams(urlParams);
+    const [ , paramsPath ] = extractHashInfo();
     const { origin } = new URL(window.location.href);
 
-    return origin + '/#' + routes.join('/') + '?' + newUrlParams.toString();
+    return origin + '/#' + routes.join('/') + (paramsPath.length > 0 ? '?' + paramsPath : '');
 }
