@@ -116,7 +116,6 @@ export const ThemeOptionsModal = ({ onSave, onHide, show }: ThemeOptionsModalPro
                         </Form.Group>
                     </>
                 )}
-                {JSON.stringify(watch())}
             </Modal.Body>
 
             <Modal.Footer>
