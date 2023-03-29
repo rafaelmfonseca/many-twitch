@@ -31,7 +31,7 @@ export const overlapStreamsThemeStyles = css`
         grid-column: 2;
     }
 
-    // Players container
+    /* Players container */
     .twitch-players-container {
         position: relative;
         width: 100%;
@@ -98,7 +98,7 @@ export const overlapStreamsThemeStyles = css`
         z-index: 9999;
     }
 
-    // Chat container
+    /* Chat container */
     .twitch-chats-container {
         width: 100%;
         height: 100%;
@@ -112,7 +112,7 @@ export const overlapStreamsThemeStyles = css`
         height: 100%;
     }
 
-    // Options container
+    /* Options container */
     .twitch-options-container {
         margin: 0.25rem;
     }

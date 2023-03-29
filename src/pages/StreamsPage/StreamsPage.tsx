@@ -19,6 +19,10 @@ export const StreamsPage = () => {
         setShowThemeOptionsModal(false);
     };
 
+    const handleShowThemeOptionsModal = () => {
+        setShowThemeOptionsModal(true);
+    };
+
     const handleSaveThemeOptionsModal = (themeOptions: ThemeOptions) => {
         setThemeOptions(themeOptions);
         setThemeOptionsInStorage(themeOptions);
@@ -53,7 +57,7 @@ export const StreamsPage = () => {
                 </MainSidebar>
                 <MainOptions>
                     <MainOptions.Content>
-                        <Button size="sm" variant="outline-secondary" onClick={() => setShowThemeOptionsModal(true)}>Settings</Button>
+                        <Button size="sm" variant="outline-secondary" onClick={handleShowThemeOptionsModal}>Settings</Button>
                     </MainOptions.Content>
                 </MainOptions>
             </Wrapper>

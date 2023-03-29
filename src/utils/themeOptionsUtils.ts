@@ -6,7 +6,7 @@ export function getThemeOptionsInStorage(): ThemeOptions {
 
     try {
         themeOptions = JSON.parse(window.localStorage.getItem(THEME_OPTIONS_STORAGE_KEY) as string);
-    } catch (e) {}
+    } catch (e) { }
 
     if (!themeOptions) {
         themeOptions = DEFAULT_THEME_OPTIONS_VALUE;
